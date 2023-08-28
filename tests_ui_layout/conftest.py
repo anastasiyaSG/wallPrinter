@@ -1,6 +1,8 @@
 import pytest
 from playwright.async_api import Playwright
 
+from pom.generator_page_elements import GeneratorPage
+
 
 @pytest.fixture()
 def set_up(page):
@@ -27,17 +29,15 @@ def context_creation(playwright):
     page = context.new_page()
     page.goto("https://wallprinter.bg/")
     page.set_default_timeout(3000)
-    #
-    # login_page = LoginPage(page)
-    # login_page.username.fill("student")
-    # login_page.password.fill("Password123")
-    # login_page.submit.click()
+
+    generator_page = GeneratorPage(page)
+    generator_page.input_field.fill("student")
 
     yield context
 
 
 @pytest.fixture()
-def login_session(context_creation):
+def creating_image_student(context_creation):
     context = context_creation
     page = context.new_page()
     page.goto("https://wallprinter.bg/")
