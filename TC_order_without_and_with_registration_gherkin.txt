@@ -1,0 +1,104 @@
+Feature: As customer I want to make orders with and without registration
+
+Background:
+      Given item "1" is created on generator page 
+      And item "1" is successfully display at product page
+      And item "2" is existing in store page
+      And item "2" is successfully display at product page
+      And item "3" is existing in price page
+
+Scenario: As an anonymous user I want to add item "1" in my basket
+Given Item "1" is with chosen size on product page
+And Quantity of item is set by default "1"
+When I click on "add to basket"
+Then Icon with basket will be show "1" 
+And Will be display message that item was add to basket 
+And User will be redirected to basket page where will be added item "1" with quantity "1"
+
+Scenario: As an anonymous user I want to add second item in my basket
+Given Item "1" was added in basket
+And Item "2" is with chosen size on product page
+When I click on "add to basket"
+Then Icon with basket will be show "2" 
+And Will be display message that item was add to basket 
+And In basket will be available follow items and quantities:
+| Item | Quantity |
+| 1    | 1        |
+| 2    | 1        |
+
+Scenario: As an anonymous user I want to check out my order
+Given Item "1"- 1qty, "2"- 1 qty was added in basket
+When I click on Checkout button
+And Fill correct address
+And Fill correct payment method
+Then Should be display message with confirm order number
+
+Scenario: As an anonymous user I want to check out order from prices page
+Given Item "3" is display on prices page
+When I click on Order button
+And Fill correct  details
+And Click on Send button 
+Then Should be display message with confirm order number
+
+Scenario: As an anonymous user I want to registrate on site
+Given I am on registration page
+When Fill all valid data
+Then Should be logged in
+
+Scenario: As a registrate user I want to add item "1" in my basket
+Given Item "1" is with chosen size on product page
+And Quantity of item is set by default "1"
+When I click on "add to basket"
+Then Icon with basket will be show "1" 
+And Will be display message that item was add to basket 
+And User will be redirected to basket page where will be added item "1" with quantity "1"
+
+Scenario: As a registrate user I want to add second item in my basket
+Given Item "1" was added in basket
+And Item "2" is with chosen size on product page
+When I click on "add to basket"
+Then Icon with basket will be show "2" 
+And Will be display message that item was add to basket 
+And In basket will be available follow items and quantities:
+| Item | Quantity |
+| 1    | 1        |
+| 2    | 1        |
+
+Scenario: As a registrate user I want to check out my order
+Given Item "1"- 1qty, "2"- 1 qty was added in basket
+When I click on Checkout button
+And Fill correct address
+And Fill correct payment method
+Then Should be display message with confirm order number
+
+Scenario: As a registrate user I want to check out order from prices page
+Given Item "3" is display on prices page
+When I click on Order button
+And Fill correct  details
+And Click on Send button 
+Then Should be display message with confirm order number
+
+Scenario: As a registrate user I want to see all my orders with status
+Given Few orders has been sent
+And I am on Profile page
+When I click on Orders
+Then Should be displayed all orders and statuses
+
+Scenario: As a registrate user I want to see my addresses
+Given I am on Profile page
+When I click on Addresses
+Then Should be display address that was used for orders
+
+Scenario: As a registrate user I want to see my downloads
+Given I am on Profile page and few download has been done
+When I click on Downloads
+Then Should be display address that was used for orders
+
+Scenario: As a registrate user I want to change my details
+Given I am on Profile page 
+And Select details option
+When I fill new name
+And New address
+And Click on Save button
+Then In profile details should be display new name and address
+But In order page address should not be change
