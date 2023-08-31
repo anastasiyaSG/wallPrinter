@@ -1,7 +1,7 @@
 import pytest
 from playwright.async_api import Playwright
 
-from pom.generator_page_elements import GeneratorPage
+from pom.home_page_elements import HomePage
 
 
 @pytest.fixture()
@@ -30,7 +30,7 @@ def context_creation(playwright):
     page.goto("https://wallprinter.bg/")
     page.set_default_timeout(3000)
 
-    generator_page = GeneratorPage(page)
+    generator_page = HomePage(page)
     generator_page.input_field.fill("student")
 
     yield context

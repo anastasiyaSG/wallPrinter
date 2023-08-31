@@ -3,7 +3,7 @@ import time
 import pytest
 from playwright.sync_api import expect
 
-from pom.generator_page_elements import GeneratorPage
+from pom.home_page_elements import HomePage
 
 
 @pytest.mark.smoke()
@@ -12,7 +12,7 @@ def test_generator_page_load_successfully(set_up) -> None:
     page = set_up
 
     # When
-    generator_page = GeneratorPage(page)
+    generator_page = HomePage(page)
 
     # Then
     expect(generator_page.logo).to_be_visible()
@@ -26,7 +26,7 @@ def test_generator_page_load_successfully(set_up) -> None:
 def test_generator_page_generate_image(set_up) -> None:
     # Given
     page = set_up
-    generator_page = GeneratorPage(page)
+    generator_page = HomePage(page)
     # When
 
     generator_page.input_field.fill("Kрасиво цвете")
@@ -40,7 +40,7 @@ def test_generator_page_generate_image(set_up) -> None:
 def test_generator_search_field_find_correctly_in_context(creating_image_student) -> None:
     # Given
     page = creating_image_student
-    generator_page = GeneratorPage(page)
+    generator_page = HomePage(page)
     # When
     generator_page.search_field.fill("student")
     # Then
@@ -51,7 +51,7 @@ def test_generator_search_field_find_correctly_in_context(creating_image_student
 def test_generator_search_field_find_correctly(set_up_visual, search_letter) -> None:
     # Given
     page = set_up_visual
-    generator_page = GeneratorPage(page)
+    generator_page = HomePage(page)
     # When
     generator_page.search_field.fill(search_letter)
     generator_page.search_field.press("Enter")

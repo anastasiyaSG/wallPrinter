@@ -1,5 +1,6 @@
-class GeneratorPage:
+class HomePage:
     def __init__(self, page):
+
         self.container_generator_empty = page.frame_locator("#picasso-container iframe").get_by_text(
             "Хей, все още нямаш нищо генерирано, опитай от полето по-долу.")
         self.logo = page.get_by_label("WPL")
