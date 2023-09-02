@@ -27,11 +27,6 @@ def context_creation(playwright):
     page = context.new_page()
     page.goto("https://wallprinter.bg/")
     page.set_default_timeout(3000)
-    #
-    # login_page = LoginPage(page)
-    # login_page.username.fill("student")
-    # login_page.password.fill("Password123")
-    # login_page.submit.click()
 
     yield context
 

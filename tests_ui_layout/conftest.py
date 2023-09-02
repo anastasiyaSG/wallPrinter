@@ -13,7 +13,7 @@ def set_up(page):
 
 @pytest.fixture()
 def set_up_visual(playwright: Playwright) -> None:
-    browser = playwright.chromium.launch(headless=False)
+    browser = playwright.chromium.launch()
     context = browser.new_context()
     page = context.new_page()
     page.goto("https://wallprinter.bg/")
