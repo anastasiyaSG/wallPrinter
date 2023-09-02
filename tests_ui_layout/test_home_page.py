@@ -7,7 +7,7 @@ from pom.home_page_elements import HomePage
 
 
 @pytest.mark.smoke()
-def test_generator_page_load_successfully(set_up) -> None:
+def test_home_page_load_successfully(set_up) -> None:
     # Given
     page = set_up
 
@@ -23,7 +23,7 @@ def test_generator_page_load_successfully(set_up) -> None:
 
 @pytest.mark.skip(reason="not generate too much images for tests")
 @pytest.mark.smoke()
-def test_generator_page_generate_image(set_up) -> None:
+def test_home_page_generate_image(set_up) -> None:
     # Given
     page = set_up
     generator_page = HomePage(page)
@@ -37,7 +37,7 @@ def test_generator_page_generate_image(set_up) -> None:
 
 @pytest.mark.skip(reason="not generate too much images for tests")
 @pytest.mark.smoke()
-def test_generator_search_field_find_correctly_in_context(creating_image_student) -> None:
+def test_home_search_field_find_correctly_in_context(creating_image_student) -> None:
     # Given
     page = creating_image_student
     generator_page = HomePage(page)
@@ -48,7 +48,7 @@ def test_generator_search_field_find_correctly_in_context(creating_image_student
 
 @pytest.mark.parametrize("search_letter", ["happiness", "щастие", "любов"])
 @pytest.mark.smoke()
-def test_generator_search_field_find_correctly(set_up_visual, search_letter) -> None:
+def test_home_search_field_find_correctly(set_up_visual, search_letter) -> None:
     # Given
     page = set_up_visual
     generator_page = HomePage(page)
