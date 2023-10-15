@@ -16,3 +16,5 @@ def test_login_with_google(set_up) -> None:
 
     # Then
     expect(page.successful).to_be_visible()
+
+# TO DO

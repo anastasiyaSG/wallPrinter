@@ -6,9 +6,8 @@ from pom.home_page_elements import HomePage
 
 def test_learn_more_page(set_up, assert_snapshot) -> None:
     page = set_up
-    generator_page = HomePage(page)
 
-    generator_page.learn_more.click()
+    page.get_by_role("link", name="Научете повече")
     time.sleep(3)
 
     assert_snapshot(page.screenshot())
