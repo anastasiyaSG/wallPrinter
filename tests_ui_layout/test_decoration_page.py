@@ -88,7 +88,7 @@ def test_projects_button_redirect_correct(set_up) -> None:
     decoration_page.projects_button.click()
 
     # Then
-    expect(page.locator(text="Произведение на изкуството върху стена")).to_be_visible()
-    expect(page.locator(text="Генерирана картина върху фотохартия")).to_be_visible()
+    expect(page.get_by_text("Произведение на изкуството върху стена")).to_be_visible()
+    expect(page.get_by_text("Генерирана картина върху фотохартия")).to_be_visible()
 
 
